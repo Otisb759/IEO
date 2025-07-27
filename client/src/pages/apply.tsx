@@ -58,7 +58,7 @@ const ethnicities = [
 ];
 
 const citizenshipStatuses = [
-  "US Citizen", "Resident Alien", "Green Card Holder", "Permanent Resident", "Not Sure"
+  "Citizen", "Resident Alien", "Green Card Holder", "Permanent Resident", "Not Sure"
 ];
 
 const employmentStatuses = [
@@ -849,21 +849,7 @@ export default function Apply() {
                       >
                         ← Back: Funding Information
                       </Button>
-                      <Button
-                        type="submit"
-                        size="lg"
-                        className="fessa-blue hover:fessa-blue-dark text-white font-semibold text-lg px-12 py-4"
-                        disabled={applicationMutation.isPending || !form.watch('agreeToTerms')}
-                      >
-                        {applicationMutation.isPending ? (
-                          <div className="flex items-center space-x-2">
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                            <span>Submitting...</span>
-                          </div>
-                        ) : (
-                          "Submit Application"
-                        )}
-                      </Button>
+                    
                     </div>
                   </div>
                 )}
