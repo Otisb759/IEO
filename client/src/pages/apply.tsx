@@ -429,7 +429,7 @@ export default function Apply() {
                     <div className="space-y-4">
                       <Label className="text-sm font-medium">Driver's License Front and Back *</Label>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-fessa-blue transition-colors">
+                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
                           <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                           <p className="text-gray-600 mb-2">Front of License</p>
                           <input
@@ -437,19 +437,20 @@ export default function Apply() {
                             accept="image/*"
                             onChange={(e) => handleFileChange(e, 'front')}
                             className="hidden"
-                            id="front-license"
+                            id="front-license-step1"
+                            key={`front-${currentStep}`}
                           />
-                          <label htmlFor="front-license" className="cursor-pointer">
-                            <Button type="button" variant="outline" size="sm">
+                          <label htmlFor="front-license-step1" className="cursor-pointer inline-block">
+                            <span className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer">
                               Choose File
-                            </Button>
+                            </span>
                           </label>
                           {frontLicenseFile && (
-                            <p className="text-sm text-green-600 mt-2">{frontLicenseFile}</p>
+                            <p className="text-sm text-green-600 mt-2 break-all">{frontLicenseFile}</p>
                           )}
                         </div>
 
-                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-fessa-blue transition-colors">
+                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
                           <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                           <p className="text-gray-600 mb-2">Back of License</p>
                           <input
@@ -457,15 +458,16 @@ export default function Apply() {
                             accept="image/*"
                             onChange={(e) => handleFileChange(e, 'back')}
                             className="hidden"
-                            id="back-license"
+                            id="back-license-step1"
+                            key={`back-${currentStep}`}
                           />
-                          <label htmlFor="back-license" className="cursor-pointer">
-                            <Button type="button" variant="outline" size="sm">
+                          <label htmlFor="back-license-step1" className="cursor-pointer inline-block">
+                            <span className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer">
                               Choose File
-                            </Button>
+                            </span>
                           </label>
                           {backLicenseFile && (
-                            <p className="text-sm text-green-600 mt-2">{backLicenseFile}</p>
+                            <p className="text-sm text-green-600 mt-2 break-all">{backLicenseFile}</p>
                           )}
                         </div>
                       </div>
@@ -763,63 +765,63 @@ export default function Apply() {
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <FormField
-                        control={form.control}
-                        name="driverLicenseFront"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Driver's License - Front *</FormLabel>
-                            <FormControl>
-                              <div className="space-y-2">
-                                <Input
-                                  type="file"
-                                  accept="image/*"
-                                  onChange={(e) => handleFileChange(e, 'front')}
-                                  className="cursor-pointer"
-                                />
-                                {frontLicenseFile && (
-                                  <p className="text-xs text-green-600">
-                                    Selected: {frontLicenseFile}
-                                  </p>
-                                )}
-                                <p className="text-xs text-gray-500">
-                                  Upload a clear photo of the front of your driver's license
-                                </p>
-                              </div>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Driver's License - Front *</Label>
+                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                          <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                          <p className="text-gray-600 mb-2">Front of License</p>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'front')}
+                            className="hidden"
+                            id="front-license-step4"
+                            key={`front-step4-${currentStep}`}
+                          />
+                          <label htmlFor="front-license-step4" className="cursor-pointer inline-block">
+                            <span className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer">
+                              Choose File
+                            </span>
+                          </label>
+                          {frontLicenseFile && (
+                            <p className="text-xs text-green-600 mt-2 break-all">
+                              Selected: {frontLicenseFile}
+                            </p>
+                          )}
+                          <p className="text-xs text-gray-500 mt-2">
+                            Upload a clear photo of the front of your driver's license
+                          </p>
+                        </div>
+                      </div>
 
-                      <FormField
-                        control={form.control}
-                        name="driverLicenseBack"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Driver's License - Back *</FormLabel>
-                            <FormControl>
-                              <div className="space-y-2">
-                                <Input
-                                  type="file"
-                                  accept="image/*"
-                                  onChange={(e) => handleFileChange(e, 'back')}
-                                  className="cursor-pointer"
-                                />
-                                {backLicenseFile && (
-                                  <p className="text-xs text-green-600">
-                                    Selected: {backLicenseFile}
-                                  </p>
-                                )}
-                                <p className="text-xs text-gray-500">
-                                  Upload a clear photo of the back of your driver's license
-                                </p>
-                              </div>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                      <div className="space-y-2">
+                        <Label className="text-sm font-medium">Driver's License - Back *</Label>
+                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
+                          <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                          <p className="text-gray-600 mb-2">Back of License</p>
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleFileChange(e, 'back')}
+                            className="hidden"
+                            id="back-license-step4"
+                            key={`back-step4-${currentStep}`}
+                          />
+                          <label htmlFor="back-license-step4" className="cursor-pointer inline-block">
+                            <span className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 cursor-pointer">
+                              Choose File
+                            </span>
+                          </label>
+                          {backLicenseFile && (
+                            <p className="text-xs text-green-600 mt-2 break-all">
+                              Selected: {backLicenseFile}
+                            </p>
+                          )}
+                          <p className="text-xs text-gray-500 mt-2">
+                            Upload a clear photo of the back of your driver's license
+                          </p>
+                        </div>
+                      </div>
                     </div>
 
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-start space-x-3">
